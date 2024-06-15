@@ -1,6 +1,8 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& a) {
+
+        // GIVES TLE because corner cases are not handled, when odd element is at first or last
         int s = 0;
         int n = a.size() - 1;
         int e = a.size() - 1;
