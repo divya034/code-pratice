@@ -1,4 +1,5 @@
 class Solution {
+// https://leetcode.com/problems/koko-eating-bananas/
 public:
     bool canEatAll(int h, vector<int>& piles, int k){
         long long int hrs = 0;
