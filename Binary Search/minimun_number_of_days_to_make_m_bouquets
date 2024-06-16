@@ -1,0 +1,54 @@
+class Solution {
+public:
+    bool canMakeB(vector<int>bloom, int day, int m, int k){
+        int b = 0;
+        int adj = 0;
+        for(int i = 0; i<bloom.size(); i++){
+
+            if(bloom[i] <= day){
+                adj++;
+            }
+
+            if(adj == k){
+                b++;
+                adj = 0; // i didnt add this
+            }
+            
+            if(b == m){
+                break;
+            }
+
+            if(bloom[i] > day){
+                adj = 0;
+            }
+
+        }
+
+        if(b==m)return true;
+        return false;
+    }
+    int minDays(vector<int>& bloom, int m, int k) {
+        
+          int s = *min_element(bloom.begin(), bloom.end());
+          int e = *max_element(bloom.begin(), bloom.end());
+
+          int mid = s + (e - s)/2;
+          int ans = -1;
+
+          while(s<=e){
+            if(canMakeB(bloom, mid, m, k)){
+                ans = mid;
+                e = mid - 1;
+            }
+            else{
+                s = mid + 1;
+            }
+
+            mid = s + (e-s)/2;
+            
+          }
+
+          return ans;
+
+    }
+};
