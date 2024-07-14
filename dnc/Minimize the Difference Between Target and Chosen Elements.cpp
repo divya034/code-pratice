@@ -1,3 +1,9 @@
+// For the first row, there are m calls
+// For each of these m calls, there are again m calls = TOTAL M^2 calls for 2nd row
+
+// This pattern continues for n rows, resulting in m^n recursive calls in total.
+
+
 class Solution {
 public:
 
