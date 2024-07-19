@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void ispalin(vector<int>&v, int i){
+void printsub(vector<int>&v, int i){
     if(i == v.size()){
         return;
     }
@@ -16,7 +16,7 @@ void ispalin(vector<int>&v, int i){
         cout<<endl;
     }
         
-        ispalin(v, i+1);
+        printsub(v, i+1);
 
 }
 
@@ -24,7 +24,7 @@ int main()
 {
     vector<int> v{1,2,3,12};
     
-    ispalin(v, 0);
+    printsub(v, 0);
 
     return 0;
 }
