@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isValid(string str) {
+        stack<char> s;
+
+        for(auto i : str){
+            if(i == 'c'){
+                // find abc pattern
+                // if there is no ab in stack
+                if(s.empty()) return false;
+
+                if(s.top() == 'b'){
+                    s.pop();
+                }
+                else{
+                    return false;
+                }
+
+// mistake didnt write s.empty()
+                if(s.empty() || s.top() != 'a'){
+                    return false;
+                }
+                else{
+                    s.pop();
+                }
+            }
+
+            else{
+                s.push(i);
+            }
+        }
+
+        if(s.empty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
