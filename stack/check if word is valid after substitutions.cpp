@@ -38,3 +38,28 @@ public:
         }
     }
 };
+
+
+
+USING STR MANIPULATION
+
+class Solution {
+public:
+    bool isValid(string str) {
+
+        if(str.size() == 0){
+            return true;
+        }
+        int found = str.find("abc");
+
+        if(found != string::npos){
+            string left = str.substr(0,found);
+
+            string right = str.substr(found + 3, str.size());
+            
+            return isValid(left + right);
+        }
+
+        return false;
+    }
+};
