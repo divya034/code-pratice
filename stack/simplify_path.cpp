@@ -19,28 +19,28 @@ public:
             cout<<current<<endl;
             i = end;
 
-          if(current == "/." || current == "/"){
+            if(current == "/.."){
+                if(!s.empty())
+                s.pop();
+            }
+            else if(current == "/." || current == "/"){
                 continue;
             }
-
-            if(current != "/.."){
+            else{
                 s.push(current);
-            }
-            else if(!s.empty()){
-                s.pop();
             }
 
 
         }
-
-           
-        string ans = !s.empty() ? "" : "/";
+        
+// or use a new ANS STRING
+        current = !s.empty() ? "" : "/";
 
         while(!s.empty()){
-            ans = s.top() + ans;
+            current = s.top() + current;
             s.pop();
         }
 
-        return ans;
+        return current;
     }
 };
