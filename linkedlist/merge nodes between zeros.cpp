@@ -27,8 +27,16 @@ public:
 
             temp = temp->next;
         }
+     
 
+       temp = newll->next;
        newll->next = NULL;
+
+       while(temp){
+        ListNode* next = temp->next;
+        delete temp;
+        temp = next;                             
+       }
 
         return head;
 
