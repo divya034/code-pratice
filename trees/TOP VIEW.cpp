@@ -1,3 +1,51 @@
+babbar code:
+class Solution {
+  public:
+    vector <int> bottomView(Node *root) {
+       vector<int> ans;
+       
+       queue<pair<Node*, int>> q;
+    //   Node and hd
+       q.push({root,0});
+       unordered_map<int, int> m;
+    //   hd to root->data
+    
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+    
+        while(!q.empty()){
+            pair<Node*, int> p = q.front();
+            q.pop();
+            
+            Node* frontnode = p.first;
+            int hd = p.second;
+            
+            m[hd] = frontnode->data;
+            mini = min(mini, hd);
+            maxi = max(maxi, hd);
+            
+            if(frontnode->left){
+                q.push({frontnode->left, hd-1});
+            }
+            
+            if(frontnode->right){
+                q.push({frontnode->right, hd+1});
+            }
+        }
+        
+        
+        for(int i = mini; i<=maxi; i++){
+            ans.push_back(m[i]);
+        }
+        
+        return ans;
+    }
+};
+
+
+my map solution:
+
+
 class Solution
 {
     public:
