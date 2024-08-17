@@ -1,3 +1,59 @@
+BABBAR CODE:
+class Solution
+{
+    public:
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    vector<int> topView(Node *root)
+    {
+         vector<int> ans;
+         if(root == nullptr){
+             return ans;
+         }
+         
+        queue<pair<Node*, int>>q;
+        
+        q.push({root,0});
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        
+        unordered_map<int, int> m;
+        // dist to root->data
+        
+        while(!q.empty()){
+            pair<Node*, int> p = q.front();
+            q.pop();
+            
+            Node* frontnode = p.first;
+            int hd = p.second;
+            
+            if(m.find(hd) == m.end()){
+                m[hd] = frontnode->data;
+                mini = min(mini, hd);
+                maxi = max(maxi, hd);
+            }
+            
+            if(frontnode->left){
+                q.push({frontnode->left, hd-1});
+            }
+            
+            if(frontnode->right){
+                q.push({frontnode->right, hd+1});
+            }
+        }
+        
+        
+        for(int i = mini; i<=maxi; i++){
+            ans.push_back(m[i]);
+        }
+        
+        return ans;
+    }
+
+};
+
+
+MY MAP CODE:
 class Solution {
   public:
       void solve(Node* root, vector<int> &ans, int dist, int currlevel,
