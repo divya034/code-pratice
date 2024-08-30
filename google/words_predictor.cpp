@@ -1,3 +1,10 @@
+ using ascii values to compute a hash is not 
+a strong way to get unique hashes and would require separate handling for collisions. 
+     For example, below 2 strings will have the same ascii sum:
+abd -> 295
+bcb -> 295
+
+
 #include <iostream>
 #include <vector>
 #include <string>
