@@ -1,6 +1,7 @@
 https://workat.tech/problem-solving/practice/inorder-predecessor-bst
-TC:
-SC:
+The time complexity of the findPredecessor function is O(h), where h is the height of the binary tree.
+In the worst case, h could be the height of the tree, which
+is O(log N) for a balanced binary search tree (BST) or O(N) for a completely unbalanced BST (like a linked list)
 
 Node* findPredecessor(Node* root, Node* p) {
     Node* curr = root;
