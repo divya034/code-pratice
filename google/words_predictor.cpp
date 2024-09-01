@@ -1,3 +1,5 @@
+https://www.reddit.com/r/algorithms/comments/17zcylu/why_time_complexity_of_hashmap_lookup_is_o1_not/
+
  using ascii values to compute a hash is not 
 a strong way to get unique hashes and would require separate handling for collisions. 
      For example, below 2 strings will have the same ascii sum:
