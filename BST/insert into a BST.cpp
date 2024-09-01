@@ -1,6 +1,38 @@
 RECURSIVE:
 Time Complexity: O(H), where H is the height of the tree. This is O(log N) for a balanced tree and O(N) for a skewed tree
 Space Complexity: O(H) due to the recursion stack. This is O(log N) for a balanced tree and O(N) for a skewed tree.
+2 same code with or without &:
+class Solution {
+public:
+    // Function to insert a node into the BST
+    TreeNode* insertNode(TreeNode* head, int val) {
+        if(head == nullptr) {
+            return new TreeNode(val);
+        }
+        
+        // Recursive insertion
+        if(val < head->val) {
+            head->left = insertNode(head->left, val);
+        } else {
+            head->right = insertNode(head->right, val);
+        }
+        
+        return head; // Return the (potentially modified) head
+    }
+    
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        // If the root is null, create a new node with the value
+        if(root == nullptr) return new TreeNode(val);
+        
+        // Insert the node into the BST
+        return insertNode(root, val);
+    }
+};
+
+
+or:
+
+
 class Solution {
 public:
     void insertNode(TreeNode* &head, int val){
