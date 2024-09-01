@@ -1,0 +1,32 @@
+TC: o(n) all nodes inorder traversal
+
+SC: o(n) or (logn) height for balanced tree
+
+
+class Solution
+{
+public:
+MISTAKE: I PUT &IN ROOT
+    void flatten(Node* root, Node* &prev){
+        if(root == nullptr){
+            return;
+        }
+        
+        flatten(root->left, prev);
+        prev->left = NULL;
+        prev->right = root;
+        prev = root;
+        flatten(root->right, prev);
+    }
+    Node *flattenBST(Node *root)
+    {  Node* prevhead = new Node(-1);
+       Node* previtr = prevhead;
+       Node* head = root;
+
+      flatten(root, previtr);
+      previtr->left = 0;
+      previtr->right = 0;
+       
+       return prevhead->right;
+    }
+};
