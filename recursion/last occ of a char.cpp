@@ -1,10 +1,38 @@
-/******************************************************************************
+Righ to left:
+#include <iostream>
+using namespace std;
 
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
+void check(string s, int n, char ch, int i, int &ans){
 
-*******************************************************************************/
+   if(i == -1){
+       return;
+   }
+   
+   if(s[i] == ch){
+       ans = i;
+       return;
+   }
+   
+   check(s, n, ch, i-1, ans);
+
+}
+
+int main()
+{
+    string s = "divyaaaa";
+    int ans = -1;
+    char ch = 'a';
+    check(s, s.size(), ch, s.size() - 1, ans);
+    
+    cout<<ans;
+    
+    
+    return 0;
+}
+
+
+LEFT TO right:
+
 
 #include <iostream>
 using namespace std;
