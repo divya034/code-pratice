@@ -1,9 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
 struct Node {
     Node* links[26];
     bool isEndOfWord = false;
@@ -106,15 +100,9 @@ public:
     }
 };
 
-// Test the code
-int main() {
-    MagicDictionary magicDictionary;
-    magicDictionary.buildDict({"hello", "leetcode"});
-    
-    cout << magicDictionary.search("hello") << endl;    // Output: false (no change allowed)
-    cout << magicDictionary.search("hhllo") << endl;    // Output: true  (change 'h' to 'e')
-    cout << magicDictionary.search("hell") << endl;     // Output: false (not same length)
-    cout << magicDictionary.search("leetcoded") << endl;  // Output: false (not in dictionary)
-
-    return 0;
-}
+/**
+ * Your MagicDictionary object will be instantiated and called as such:
+ * MagicDictionary* obj = new MagicDictionary();
+ * obj->buildDict(dictionary);
+ * bool param_2 = obj->search(searchWord);
+ */
