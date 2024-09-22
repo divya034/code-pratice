@@ -1,3 +1,60 @@
+without trie:
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
+        // Step 1: Sort the products lexicographically
+        sort(products.begin(), products.end());
+        
+        vector<vector<string>> suggestions;
+        string prefix;
+        
+        // Step 2: Iterate through each character of searchWord
+        for (char ch : searchWord) {
+            prefix += ch; // Build the prefix
+            
+            // Step 3: Find matching products for the current prefix
+            vector<string> matches;
+            for (const string& product : products) {
+                // Check if the product starts with the current prefix
+                if (product.substr(0, prefix.size()) == prefix) {
+                    matches.push_back(product);
+                    // Limit to top 3 matches
+                    if (matches.size() == 3) break;
+                }
+            }
+            suggestions.push_back(matches);
+        }
+        
+        return suggestions;
+    }
+};
+
+// Example usage
+int main() {
+    Solution solution;
+    vector<string> products = {"mobile","mouse","moneypot","monitor","mousepad"};
+    string searchWord = "mouse";
+    vector<vector<string>> result = solution.suggestedProducts(products, searchWord);
+
+    // Print result
+    for (const auto& vec : result) {
+        for (const auto& str : vec) {
+            cout << str << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+
 struct Node {
     Node* links[26]; // Links to child nodes
     vector<string> products; // Stores products for suggestions
