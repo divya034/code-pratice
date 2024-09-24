@@ -102,4 +102,5 @@ public:
 };
 
 
+Space optimization, need to keep track of K elements, worst case O(K)
 
