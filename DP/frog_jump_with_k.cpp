@@ -104,3 +104,31 @@ public:
 
 Space optimization, need to keep track of K elements, worst case O(K)
 
+
+
+class Solution {
+public:
+    int frogJump(vector<int>& heights, int k) {
+        int n = heights.size();
+        vector<int> dp(k, INT_MAX);  // Sliding window of size 'k'
+        
+        dp[0] = 0;  // Base case: no energy required to stay on the first step
+
+        for (int i = 1; i < n; i++) {
+            int current_min = INT_MAX;
+            
+            // Iterate over the possible jumps (up to 'k' steps)
+            for (int j = 1; j <= k; j++) {
+                if (i - j >= 0) {
+                    int jump = abs(heights[i] - heights[i - j]) + dp[(i - j) % k];
+                    current_min = min(current_min, jump);
+                }
+            }
+            
+            // Update dp for the current step
+            dp[i % k] = current_min;
+        }
+
+        return dp[(n - 1) % k];
+    }
+};
