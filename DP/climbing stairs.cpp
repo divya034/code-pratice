@@ -1,3 +1,19 @@
+solve(3)
+   |
+   +-- solve(2)
+   |     |
+   |     +-- solve(1)
+   |     |     |
+   |     |     +-- solve(0) -> 1
+   |     |     +-- solve(-1) -> 0
+   |     |
+   |     +-- solve(0) -> 1
+   |
+   +-- solve(1)
+         |
+         +-- solve(0) -> 1
+         +-- solve(-1) -> 0
+
 recursion:
 2^n
 o(n) stack
