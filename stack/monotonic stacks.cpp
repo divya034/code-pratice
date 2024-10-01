@@ -41,7 +41,8 @@ void prevGreater(vector<int> &arr){
     for(int i = 0; i<arr.size(); i++){
         // if on the top we have smaller anyway it wont be ans so pop
         // till we find something greater and maintain it as ans for now
-        while(!s.empty() && arr[s.top()] < arr[i]){
+      // Discarding the values, which wont be ans
+        while(!s.empty() && arr[s.top()] <= arr[i]){
             s.pop();
             // pop all prev smaller
         }
@@ -89,8 +90,8 @@ void prevSmaller(vector<int> arr){
     vector<int> ans(arr.size(), -1);
     
     for(int i = 0; i<arr.size(); i++){
-        // any prev element smaller pop
-        while(!s.empty() && arr[s.top()] > arr[i]){
+        // Discarding the values, which wont be ans---any prev element smaller pop
+        while(!s.empty() && arr[s.top()] >= arr[i]){
             s.pop();
         }
         
