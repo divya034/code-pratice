@@ -1,7 +1,16 @@
+TC: O(n+e)log n traversing all nodes and edges
+ther can be n nodes in the PQ
+
+SC:
+dist---o(n)
+pq---o(n)
+adj list = o(v+e)
+
+
 class Solution
 {
 	public:
-	//Function to find the shortest distance of all the vertices
+    //Function to find the shortest distance of all the vertices
     //from the source vertex S.
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
