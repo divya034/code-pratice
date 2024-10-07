@@ -1,4 +1,6 @@
-
+O(2ALPHA)--CONSTANT
+SC:
+  RANK AND PARENT VECTOR ---O(N)
 
 #include <bits/stdc++.h>
 using namespace std;
