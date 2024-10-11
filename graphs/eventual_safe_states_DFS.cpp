@@ -6,6 +6,7 @@ TC: O(V+E)
 
 All the nodes, that in further path dont get a cycle gets unmarked as path = 0.
 All the nodes which are part of a cycle or lead to a cycle remain in path = 1.
+everything without/no leading to a cycle gets unvisited after dfs ends
 
 class Solution {
   public:
