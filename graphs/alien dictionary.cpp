@@ -28,6 +28,11 @@ CODE:
 Striver code's, i HAD similar approach but build adj WITHOUT using int values, I am using strings as node
   TC: (number words x (min length of two words)) + 
   BFS: TOPOSORT --> O(N + E)
+
+EVERY K charcter can be connected to k - 1 characters 
+E -- max k^2
+  BFS toporsot TC: O(K + E) ---> E < K^2
+  
   SC: 
   extra space used: 
 toposort---> O(N) n is number of characters
