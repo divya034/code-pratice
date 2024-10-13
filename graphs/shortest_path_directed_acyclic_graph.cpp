@@ -8,6 +8,11 @@ adj---> O(N+E)
 Recursive stack space O(N) --->toptosort
 vis-->o(n)
 dist-->o(N)
+  
+Nodet 0 :
+The intuition behind using topological sorting in the context of finding 
+the shortest paths in a Directed Acyclic Graph (DAG) is that every node reachable from the source will be in the stack after processing the source node.
+
 Note 1:
 when a node comes up in topo sort, all the possible paths to reach that node are considered (as in-degree has become 0),
 that's why when we pop it out from the stack, whatever distance is stored in distance array is the final distance for that node.
