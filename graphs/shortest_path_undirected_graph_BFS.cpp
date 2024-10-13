@@ -8,42 +8,40 @@ adj--->o(N+E)
 
 class Solution {
   public:
-
-vector<int> shortestPath(int N, int M, vector<vector<int>>& edges) {
-        // Adjacency list representation
-       vector<pair<int, int>> adj[N];  // Adjacency list for weighted graph
-    for (int i = 0; i < M; i++) {
-        int u = edges[i][0], v = edges[i][1], weight = edges[i][2];
-        adj[u].push_back({v, weight});
-    }
-
-    vector<int> dist(N, INT_MAX); 
-    queue<int> q;
-    q.push(0);
-    dist[0] = 0;
-
-    while (!q.empty()) {
-        int node = q.front();
-        q.pop();
-
-        // Explore neighbors
-       for (int j = 0; j < adj[node].size(); j++) {
-            int nextNode = adj[node][j].first;
-            int edgeWeight = adj[node][j].second;
+    vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
+        vector<int> adj[N];
+        
+        for(auto i : edges){
+            int u = i[0];
+            int v = i[1];
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        
+        vector<int> dist(N, INT_MAX);
+        dist[src] = 0;
+        
+        queue<int> q;
+        q.push(src);
+        
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
             
-            // Relaxation step
-            if (dist[node] + edgeWeight < dist[nextNode]) {
-                dist[nextNode] = dist[node] + edgeWeight;
-                q.push(nextNode);
+            for(auto i: adj[node]){
+                if(dist[node] + 1 < dist[i]){
+                    dist[i] = dist[node] + 1;
+                    q.push(i);
+                }
             }
         }
-    }
-
-    // Replace unreachable nodes' distances with -1
-    for (auto &it : dist) {
-        if (it == INT_MAX) it = -1;
-    }
-    
-    return dist;
+        
+        for(auto &i : dist){
+            if(i == INT_MAX){
+                i = -1;
+            }
+        }
+        
+        return dist;
     }
 };
