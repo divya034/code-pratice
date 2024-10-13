@@ -26,6 +26,9 @@ it will have more TC than the topo sort logic, since you'd need to revisit a nod
 Note 3:
 The question again  has been modified. 
 If there is something else (not 0) at the top of the stack, we must not  process that and simply keep popping it until we encounter 0 at the top. 
+if (dist[node] != INT_MAX) {
+
+
 
 class Solution {
   public:
