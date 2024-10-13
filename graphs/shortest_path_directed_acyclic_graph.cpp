@@ -1,3 +1,25 @@
+TC: 
+O(N+E) ---> Topo sort
+o(N+e) --->stack processing
+
+SC:
+Stack --> o(N)
+adj---> O(N+E)
+Recursive stack space O(N) --->toptosort
+vis-->o(n)
+dist-->o(N)
+Note 1:
+when a node comes up in topo sort, all the possible paths to reach that node are considered (as in-degree has become 0),
+that's why when we pop it out from the stack, whatever distance is stored in distance array is the final distance for that node.
+
+Note 2:
+BFS from source would be better??
+it will have more TC than the topo sort logic, since you'd need to revisit a node's adjacent/child nodes if you encounter a shorter path for them in the future again
+
+Note 3:
+The question again  has been modified. 
+If there is something else (not 0) at the top of the stack, we must not  process that and simply keep popping it until we encounter 0 at the top. 
+
 class Solution {
   public:
 void toposort(int node, vector<int> &vis, vector<pair<int,int>> adj[], stack<int> &st) {
