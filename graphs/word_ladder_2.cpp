@@ -1,4 +1,92 @@
+NOT PREDICTABLE:
 
+TC:
+V be the number of vectors (sequences) stored in the queue at its peak
+O(V)
+
+generating neighbors from last, for topvector:
+Internal loop: word length (Last string) x 26 x log N (for set)  
+So for each word (LENGTH L) processed in the queue, this contributes 
+O(L) operations, leading to a total contribution of 
+O(V×L)
+
+
+Space complexity:
+then in the worst case, the queue could contain 
+O(V) vectors where each vector can have at most 
+K elements. So, the space used by the queue can be considered O(V×K)
+
+Used Set:
+The unordered_set stores words from the wordList to ensure no duplicates are processed. In the worst case, this also takes up to 
+O(N) space.
+    
+Output List:
+The ans vector could also grow up to 
+O(N) in size if it holds many transformation sequences.
+
+
+class Solution {
+public:
+    vector<vector<string>> findSequences(string b, string e, vector<string>& wordList) {
+        queue<vector<string>> q;
+        q.push({b});
+        unordered_set<string> s(wordList.begin(), wordList.end());
+        
+        vector<string> used;
+        vector<vector<string>> ans;
+        int level = 0;
+        
+        while(!q.empty()){
+            vector<string> topvector = q.front();
+            q.pop();
+            
+            if(topvector.size() > level){
+                // new level
+                level++;
+                for(auto it: used){
+                    s.erase(it);
+                }
+                
+                used.clear();
+                
+            }
+            
+            
+            string last = topvector.back();
+            // if we found our ans in the last of top vector
+            if(last == e){
+                if(ans.size() == 0){
+                    ans.push_back(topvector);
+                }
+                
+                else if(ans[0].size() == topvector.size()){
+                    ans.push_back(topvector);
+                }
+                
+            }
+            
+            for(int i = 0; i<last.size(); i++){
+                char original = last[i];
+                
+                for(char ch = 'a'; ch <= 'z'; ++ch){
+                    last[i] = ch;
+                    
+                    if(s.find(last) != s.end()){
+                        topvector.push_back(last);
+                        q.push(topvector);
+                        // erase
+                        used.push_back(last);
+                        topvector.pop_back();
+                    }
+                }
+                
+                last[i] = original;
+            }
+        }
+        
+        return ans;
+    }
+};
 
 GPT, ONLY CHECKING LEVEL LOGIC WAS CHANGED FRON STRIVER
 vector<vector<string>> findSequences(string b, string e, vector<string>& wordList) {
