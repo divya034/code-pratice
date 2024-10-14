@@ -1,10 +1,24 @@
+
+Tc:
+for loop ---> O(number of words in list) --- O(N) x 25 chars
+it only goes into queue if it is present in the list TC = N x 
+Internal loop: word length x 26 x log N (for set)  
+
+number of transitions will max run for N times( number of words in the wordlist)
+
+SC:
+queue--> max will have all words from word list
+set----->will ahve all from wordList
+
+
 class Solution {
 public:
     int wordLadderLength(string start, string target, vector<string>& wordList) {
         queue<pair<string, int>> q;
         q.push({start, 1});
         unordered_set<string> s(wordList.begin(), wordList.end());
-        s.erase(start);
+        s.erase(start); 
+        // code is working without above step^
         
         while(!q.empty()){
             string word = q.front().first;
