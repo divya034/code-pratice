@@ -10,7 +10,12 @@ SC:
 queue--> max will have all words from word list
 set----->will ahve all from wordList
 
-
+Edge Cases:
+If target is not in the word list:
+The function will return 0 if no valid transformation sequence leads to target.
+If start is already the target:
+This case is implicitly handled because if start == target, the queue will return immediately in the first iteration when word == target.
+    
 class Solution {
 public:
     int wordLadderLength(string start, string target, vector<string>& wordList) {
