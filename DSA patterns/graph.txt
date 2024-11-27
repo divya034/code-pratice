@@ -1,0 +1,2 @@
+Clone a graphs--
+cloning same thing with another, think of HASHmap
