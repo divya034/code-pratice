@@ -1,3 +1,86 @@
+neetcode:
+class Solution {
+public:
+    int bfs(int i, int j, vector<vector<int>> &vis, vector<vector<int>> &grid){
+        vis[i][j] = 1;
+        int time = 0;
+
+        vector<int> dx = {0,0,-1,1};
+        vector<int> dy = {-1,1,0,0};
+
+        int r = grid.size();
+        int c = grid[0].size();
+
+        queue<pair<int,int>> q;
+        q.push({i,j});
+
+        while(!q.empty()){
+            int x = q.front().first;
+            int y = q.front().second;
+            int size = q.size();
+            bool foundFresh = false;
+            q.pop();
+
+            // check all 4 direction from each rotten fruit
+            for(int s = 0; s < size; s++){
+                for(int k = 0; k<4; k++){
+                    int new_x = x + dx[k];
+                    int new_y = y + dy[k];
+                    
+                    while(new_x >= 0 && new_x < r &&
+                        new_y >= 0 && new_y < c &&
+                        grid[new_x][new_y] == 1 && 
+                        vis[new_x][new_y] != 1){
+                                cout<<new_x<<" "<<new_y<<endl;
+                            vis[new_x][new_y] = 1;
+                            q.push({new_x, new_y});
+                            foundFresh = true;
+
+                    }
+                }
+            }
+
+            if(foundFresh) time++;
+        }
+
+        return time;
+    }
+    int orangesRotting(vector<vector<int>>& grid) {
+        int c = grid[0].size();
+        int r = grid.size();
+        vector<vector<int>> vis(r, vector<int>(c, 0));
+        int minute = 0;
+
+        for(int i = 0; i<r; i++){
+            for(int j = 0; j<c; j++){
+                if(grid[i][j] == 2 && !vis[i][j]){
+                    minute = bfs(i, j, vis, grid);
+                }
+            }
+        }
+
+        return minute;
+    }
+};
+
+// move level wise
+// for example level 1:---> 
+// rot all the vertical and horizontal fresh fruit(1) from all rotten(2)
+// if we found a (1) in any 4 directions from (2), minute++
+// Time complexity:
+// BFS--> 
+// O(V+E)
+
+// Extra Space used:
+// queue - o(V)
+// vis- grid.size()
+
+
+
+
+
+
+
 Tc: BFS of all nodes worst case
     o(nxm)
     
