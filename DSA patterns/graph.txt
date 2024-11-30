@@ -1,2 +1,6 @@
 Clone a graphs--
 cloning same thing with another, think of HASHmap
+
+Pacific ocean flow:
+when a cell coordinates needs a marker or flag
+use the same data structure as grid like vector<vector<bool>> marker1; and mark that same cell as TRUE or FALSE
